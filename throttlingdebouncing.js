@@ -1,43 +1,41 @@
-let count = 1;
-
-const getData = () => {
-  console.log("fetching data", count++);
+const getData = (ex) => {
+  console.log("fetching data", ex.name + " ( " + ex.id + " ) ");
 };
 
 const Debouncing = (fun, delay) => {
   let debounceTimer;
 
-  return function () {
+  return function (args) {
     clearTimeout(debounceTimer);
     debounceTimer = setTimeout(() => {
-      fun();
+      fun.apply(this, [args]);
     }, delay);
   };
 };
-
+let args = { name: "xyz", id: "1234578" };
 const betterDebouncingfuntion = Debouncing(getData, 1000);
 
 document.getElementById("Click").addEventListener("click", () => {
-  betterDebouncingfuntion();
+  betterDebouncingfuntion(args);
 });
 
 // throttling
-let flag = true;
 
 const Throttling = (fun, delay) => {
-  if (flag) {
-    fun();
-    setTimeout(() => {
-      flag = true;
-    }, delay);
-    flag = false;
-  }
+  let flag = true;
+  return function () {
+    if (flag) {
+      fun.apply(this,[arg]);
+      setTimeout(() => {
+        flag = true;
+      }, delay);
+      flag = false;
+    }
+  };
 };
-
-const betterThrottlingfuntion = () => {
-  Throttling(getData, 2000);
-};
+let arg = { name: "xyz", id: "1234578" };
+const betterThrottlingfuntion = Throttling(getData, 2000);
 
 document.getElementById("Click-throttling").addEventListener("click", () => {
-  betterThrottlingfuntion();
+  betterThrottlingfuntion(args);
 });
