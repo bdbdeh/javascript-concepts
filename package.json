@@ -1,0 +1,25 @@
+{
+  "name": "javascript-concepts",
+  "version": "1.0.0",
+  "description": "recalling react",
+  "main-page": "App.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bdbdeh/javascript-concepts.git"
+  },
+  "keywords": [
+    "React"
+  ],
+  "author": "sirisha",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bdbdeh/javascript-concepts/issues"
+  },
+  "homepage": "https://github.com/bdbdeh/javascript-concepts#readme",
+  "devDependencies": {
+    "parcel": "^2.15.2"
+  }
+}
